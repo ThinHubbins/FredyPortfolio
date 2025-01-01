@@ -1139,7 +1139,7 @@ grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
     }
 }
 
-@media screen and (max-width:420px){
+@media screen and (max-width:415px){
     .hero{
         top: 10%;
     }
@@ -1155,6 +1155,17 @@ grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
     .section4{
         height: 250vh
     }
+}
+
+@media screen and (max-width:413px){
+    
+    .links{
+        margin: 0;
+    }
+    .hero{
+        top: 60%;
+    }
+    
 }
 
 @media screen and (max-width:377px){
