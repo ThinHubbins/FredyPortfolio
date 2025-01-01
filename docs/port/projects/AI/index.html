@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice-Activated AI Bot</title>
+   <style>
+    /* General page settings */
+    body {
+      font-family: 'Roboto Mono', monospace;
+      background: linear-gradient(45deg, #1c1c1c, #333333);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 30px;
+      color: #00ff00;
+      text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+    }
+
+    #status {
+      font-size: 20px;
+      color: #00ff00;
+      margin-top: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+    }
+
+    /* Bento Box styling */
+    #output {
+      margin-top: 30px;
+      font-size: 18px;
+      padding: 20px;
+      border: 2px solid #444;
+      border-radius: 12px;
+      background-color: rgba(50, 50, 50, 0.8);
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+      color: #b0b0b0;
+      text-shadow: 0 0 5px #b0b0b0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #output:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 255, 0, 0.7);
+    }
+
+    /* Visualizer (circular pulse effect) */
+    .visualizer {
+      display: none;
+      margin-top: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 5px solid #00ff00;
+      animation: pulse 1.5s infinite ease-in-out;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Pulse effect for the visualizer */
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+      }
+    }
+
+    /* For better styling on mobile */
+    @media (max-width: 768px) {
+      #output {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Voice-Activated AI Bot</h1>
+  <p id="status">Listening for "Nora"... 🎙️</p>
+  <div id="output"></div>
+  <div class="visualizer"></div> <!-- Circular vocalizer -->
+
+  <!-- Intro Music (Hidden Audio Element) -->
+<audio id="intro-music" src="UI%20Sounds_%20Futuristic%20sound%20effects%20example%20(mp3cut.net).mp3" preload="auto"></audio>
+
+
+  <script>
+    let voices = [];
+    let isActivated = false; // Bot activation state
+    let isSpeaking = false; // Prevent recognition during bot speech
+    let botResponses = []; // Track bot's own responses
+    let recognition; // Speech recognition instance
+
+    // Google Custom Search API configuration
+    const apiKey = 'AIzaSyCkaGG8d45jOrodzXy0SrG9sjeLpiq9SRA'; // Your Google API Key
+    const searchEngineId = '3035deebd08344e59'; // Your Custom Search Engine ID
+
+    // Load available voices
+    function loadVoices() {
+      voices = window.speechSynthesis.getVoices();
+      startSpeechRecognition();
+    }
+
+    // Speak response
+    function speakResponse(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      const friendlyVoice = voices.find(voice =>
+        voice.name.includes('Google UK English Female') || 
+        voice.lang.includes('en-GB') || 
+        voice.name.includes('Zira')
+      );
+
+      utterance.voice = friendlyVoice || voices[0]; // Default to the first available voice
+      utterance.rate = 1.1; // Slightly faster for a more lively tone
+      utterance.pitch = 1.4; // A bit higher for a friendly, conversational tone
+
+      botResponses.push(text.toLowerCase());
+      console.log('Speaking:', text);
+
+      isSpeaking = true;
+
+      // Show visualizer when speaking
+      document.querySelector('.visualizer').style.display = 'block';
+
+      utterance.onend = () => {
+        isSpeaking = false;
+        document.querySelector('.visualizer').style.display = 'none'; // Hide visualizer after speaking
+        recognition.start(); // Resume speech recognition after speaking
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Start Speech Recognition
+// Start Speech Recognition
+function startSpeechRecognition() {
+  if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
+    alert('Your browser does not support the Web Speech API. Please try Chrome or Edge.');
+    return;
+  }
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  
+  recognition.lang = 'en-US';
+  recognition.continuous = true; // Continuous listening mode
+  recognition.interimResults = false;
+
+  recognition.onstart = () => {
+    console.log('Speech recognition started...');
+  };
+
+  recognition.onresult = (event) => {
+    if (isSpeaking) return; // Prevent the bot from reacting to its own speech
+
+    const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+    console.log('Heard:', transcript);
+
+    if (botResponses.includes(transcript)) {
+      console.log('Ignored own response:', transcript); // Ignore the bot's own responses
+      return;
+    }
+
+    if (transcript.includes('nora')) {
+      if (!isActivated) {
+        isActivated = true;
+        document.getElementById('status').innerText = 'Bot Activated! Listening for commands... 🎧';
+        
+        // Play the intro music when "Nora" is activated
+        const introMusic = document.getElementById('intro-music');
+        introMusic.play().catch((error) => {
+          console.error('Error playing the intro music:', error);
+        });
+
+        speakResponse("Hello! This is Nora");
+      }
+    } else if (isActivated) {
+      executeCommand(transcript);
+    }
+  };
+
+  recognition.onerror = (e) => {
+    console.error('Speech recognition error:', e);
+    document.getElementById('status').innerText = 'Error: Could not recognize speech. Please check your microphone and browser settings.';
+  };
+
+  recognition.onend = () => {
+    console.log('Speech recognition ended. Restarting...');
+    recognition.start();
+  };
+
+  recognition.start(); // Start listening
+}
+
+
+    // Execute user command
+    function executeCommand(command) {
+      const output = document.getElementById('output');
+      let responseText = '';
+        
+      // List of ignored commands
+      const ignoredCommands = [
+        /the current time is/,
+        /how can i assist you/,
+        /i didn't understand that/,
+        /anything else?/
+      ];
+
+      const isIgnored = ignoredCommands.some(pattern => pattern.test(command));
+      if (isIgnored) return; // Ignore the command
+
+      // Famous facts hard-coded
+      if (command.includes('who is albert einstein')) {
+        responseText = "Albert Einstein was a theoretical physicist known for developing the theory of relativity, one of the two pillars of modern physics. He won the Nobel Prize in Physics in 1921.";
+      } else if (command.includes('what is the capital of france')) {
+        responseText = "The capital of France is Paris.";
+      } else if (command.includes('where is the eiffel tower')) {
+        responseText = "The Eiffel Tower is located in Paris, France.";
+      } else if (command.includes('search for') || command.includes('who is') || command.includes('what is') || 
+                 command.includes('where is') || command.includes('when will') || command.includes('is there') || 
+                 command.includes('will there') || command.includes('can there') || command.includes('how to') || 
+                 command.includes('how do you')) {
+        const query = extractQuery(command);
+        searchWeb(query); // Call the search function to get online results
+        return;
+      } else {
+        responseText = "Anything else?";
+      }
+
+      output.innerHTML = `<p>Command: ${command}</p><p>Bot Response: ${responseText}</p>`;
+      speakResponse(responseText);
+    }
+
+    // Extract query from the command based on specific phrases
+    function extractQuery(command) {
+      const phrases = ['search for', 'who is', 'what is', 'where is', 'when will', 'is there', 'will there', 'can there', 'how to', 'how do you', 'does' , 'will'];
+      let query = command;
+
+      phrases.forEach(phrase => {
+        query = query.replace(phrase, '').trim();
+      });
+
+      return query;
+    }
+
+    // Search the web using Google Custom Search API
+    function searchWeb(query) {
+      const output = document.getElementById('output');
+      const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&key=${apiKey}&cx=${searchEngineId}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.items && data.items.length > 0) {
+            const firstResult = data.items[0];
+            const resultText = `"${firstResult.title}": ${firstResult.snippet}`;
+            output.innerHTML = `<p>Search Query: ${query}</p><p>Bot Response: ${resultText}</p>`;
+            speakResponse(resultText);
+          } else {
+            const noResultsText = "Sorry, I couldn't find any relevant results for that query.";
+            output.innerHTML = `<p>Search Query: ${query}</p><p>Bot Response: ${noResultsText}</p>`;
+            speakResponse(noResultsText);
+          }
+        })
+        .catch(error => {
+          console.error('Error with web search:', error);
+          const errorText = "Sorry, I couldn't perform the search. Please try again later.";
+          output.innerHTML = `<p>Search Query: ${query}</p><p>Bot Response: ${errorText}</p>`;
+          speakResponse(errorText);
+        });
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    } else {
+      console.error('SpeechSynthesis API is not supported in this browser.');
+    }
+  </script>
+</body>
+</html>

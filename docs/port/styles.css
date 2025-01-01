@@ -1,0 +1,868 @@
+/* General body styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Satisfy&display=swap');
+@font-face{
+    font-family: MyFont;
+    src: url(font/SAIBA-45.ttf);
+}
+@font-face{
+    font-family: shell;
+    src: url(font/shell.otf);
+}
+@font-face{
+    font-family: MyFont2;
+    src: url(font/thob.ttf);
+}
+@font-face{
+    font-family: scifi;
+    src: url(font/scifi.otf)
+}
+@font-face{
+    font-family: meta;
+   src: url(font/meta.ttf)
+}
+* {
+    border: 1px solid red;
+}
+.content{
+    padding: 0 1em;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 757vh; /* Allow sufficient scrolling */
+  overflow-x: clip;
+    background: linear-gradient(
+        to right, white 0%,white 50%, black 0%, black 50%
+    );
+    
+}
+
+
+/* Initial intro screen setup */
+.intro {
+  position: relative;
+  height: 100vh;
+  background-color: #000; /* Black background initially */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 1s ease;/* Smooth transition for background */
+
+}
+
+#slogan {
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 17rem;
+  transition: opacity 0.8s ease;
+  font-family: scifi;
+   
+    
+}
+
+.scrolled #slogan{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+      top: 10px;
+  left: 10px;
+    
+}
+
+#name {
+  font-size: 5rem;
+  font-weight: bold; /* Initial background */
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  color: #fff; /* Initial text color */
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: meta;
+  padding: 0 1em;
+
+   
+}
+
+/* When scrolling occurs */
+.scrolled .intro {
+  background-color: transparent; 
+ 
+}
+
+.scrolled #name {
+  font-size: 2rem;
+  top: -22px;
+  left: -30px;
+  transform: translate(0, 0);
+ backdrop-filter: blur(5px);
+  width: 100vw;/* Remove background */
+  position: fixed; /* Fix the name to the top left */
+  padding: 1rem; /* Adjust padding */
+  border-radius: 5px; /* Adjust border-radius */
+  color: #000; /* Change text color to black when scrolled */
+    padding: 20px;
+    z-index: 1;
+    font-weight: bold;
+    color: white; /* The color of the text */
+    text-shadow:
+        2px 2px 0 black,   
+        -2px 2px 0 black,  
+        2px -2px 0 black,  
+        -2px -2px 0 black, 
+        0px 2px 0 black,  
+        0px -2px 0 black,  
+        2px 0px 0 black,  
+        -2px 0px 0 black;
+    top: -20px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2)
+    
+}
+.scrolled #name:before{
+    content: "CHINWEZE-";
+}
+
+.content {
+  opacity: 0;
+  padding: 2rem;
+  color: #000;
+  transition: opacity 1s ease;
+  margin-top: 3rem;
+  display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+    width: 100%;
+}
+
+.content-visible {
+  opacity: 1;
+}
+.text h2{
+}
+
+.my {
+    padding: 20px;
+    position: fixed; 
+    left:55.5rem;/* Keeps it vertically aligned */
+    color: white;
+    transform: rotate(-90deg);
+    font-size: 15px;
+    font-family: MyFont;
+    border: 2px solid white;
+    border-radius: 30px 5px 5px;
+    display: grid;
+    align-items: center;
+    overflow: hidden; /* Ensure red background stays within bounds */
+    height: 0.4rem; /* Set a fixed height */
+    width: 20rem;
+    padding: 20px;
+    z-index: 1;
+    top: 20rem;
+    letter-spacing: 5px;
+    align-content: center;
+    text-align: center;
+    transition: transform 0.3s ease; 
+}
+.skill-item img{
+    pointer-events: none;
+}
+.yan{
+     animation: spin 20s linear infinite;
+    height: 25em;
+     background-size: contain; 
+    background-repeat: no-repeat;
+    
+}
+.yang{
+    position: absolute;
+    height: 30rem;
+    width: 95rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -40em;
+    z-index: -1;
+    pointer-events: none;
+}
+.project-item p{
+    color: grey;
+    height: 4px;
+    font-family:fantasy;
+    margin-top: 0.4rem;
+    
+}
+
+
+
+.my:before {
+    content: "";
+    background: white;
+    position: absolute;
+    width: var(--progress-width, 0%); /* Progress width controlled by JS */
+    height: 100%; /* Full height for horizontal fill */
+    left: 0; /* Start from the left */
+    bottom: 0;
+    z-index: -1;
+    transition: width 0.1s ease; /* Smooth transition for updates */
+}
+
+/* Overlay for text color change */
+.my:after {
+    content: "FREDRICK";
+    position: absolute;
+    font-family: meta;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    clip-path: inset(0 var(--clip-width, 100%) 0 0); /* Dynamic masking */
+    color: black; /* Text changes to black progressively */
+}
+
+
+.imgbr{
+    justify-self: start;
+    max-width:15rem;
+    height: 20rem;
+    border: 3px solid white;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:30px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    transition: .3s ease;
+}
+.cv{
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:  100px;
+    min-width: 20rem;
+    
+    
+}
+.btn {
+    padding: 15px 60px;
+    z-index: 1;
+    font-family: scifi;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    border: 3px solid white;
+    box-shadow: inset 0 0 0 0 white;
+    transition: ease-out 0.3s;
+    position: relative; /* Required for :before to position itself relative to the button */
+    overflow: hidden; /* Ensures the :before content stays within the button */
+}
+
+.btn:before {
+    content: "Download";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: white; /* Color of the hover effect */
+    z-index: -1; /* Ensures the :before element is behind the text */
+    transition: width 0.3s ease-out;
+    opacity: 0;
+}
+
+.btn:hover {
+    box-shadow: inset 200px 0 0 0 white;
+    color: black;
+    transform: scale(1.1);
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+.btn:hover:before {
+    width: 100%;
+    opacity: 1;
+    
+}
+
+.img{
+      top: 17%;
+    left: 57em;
+    position: relative;
+    animation: fade-in linear;
+    animation-timeline: view();
+    animation-range-start: cover;
+    animation-range-end: 500px;
+    width: 20em;
+    height: 31.5em;
+    overflow-x: hidden;
+      
+  
+}
+.whole{
+       position: relative;
+    width: 100%;
+    height: 200vh;
+}
+.yin{
+        position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+@keyframes fade-in {
+    from {scale: .8; opacity: 0;}
+    to {scale: 1; opacity: 1;}
+}
+
+.imgbr:before{
+    content: "";
+    background: black;
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    transform: rotate(45deg);
+}
+
+
+.profile {
+    background-image: url(img/images/gojo2.jpg);
+    height: 20rem;
+    width: 15rem;
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    border: 2px 2px solid white;
+    z-index: 1;
+  
+
+     
+}
+.imgbr:hover{
+    transform: scale(1.1);
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end; /* Aligns items to the top */
+  align-items: flex-start; /* Ensures vertical alignment */
+  gap: 30px; /* Adds spacing between the links */
+  padding: 20px; /* Optional padding around the container */
+  flex-direction: row; /* Keep links horizontally aligned */
+  position: absolute; /* Allows positioning the links at the top */
+  top: 0;
+    left: -20px
+}
+
+.hero {
+  position: relative; /* Ensure the 'hero' div is the reference for positioning */
+}
+
+
+.links a {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.links a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px 15px rgba(0, 0, 0, 0.3);
+  color: white;
+    background: black;
+    border: 2px solid white;
+}
+
+.container {
+  height: 230vh;
+    width: 50vw;
+    background: black;
+    color: white;
+    margin-bottom: 20em;
+   
+    
+    
+}
+
+.text{
+    width: 40%;
+    padding-top: 130px;
+    font-family: MyFont2;
+    letter-spacing: 1px;
+    word-spacing: 10px;
+    margin-bottom: 20px;
+    position: absolute;
+}
+.text h3{
+    font-family: shell;
+     letter-spacing: 2px;
+    word-spacing: -1px;
+}
+h1{
+    margin: 0.3em;
+    font-size: 2em;
+}
+h2 , h3{
+    margin-bottom: 0.5em
+}
+.title{
+    text-align: center;
+}
+.title h1{
+    font-family: scifi;
+    padding-top: 80px;
+    font-size: 1.5em;
+}
+.title p{
+    font-family:fantasy;
+    letter-spacing: 1px;
+}
+.timeline{
+    margin: 5em auto;
+    max-width: 34.15em;
+}
+.timeline-item{
+    max-width: 20em;
+    padding: 1.5em;
+    padding-bottom: 1.5em;
+    position: relative;
+}
+.timeline-content{
+    border: 2px solid white;
+    border-radius: 1em;
+    padding: 1em
+}
+.timeline-content p{
+    line-height: 27px
+}
+.timeline-item:nth-child(odd){
+    border-left: 3px solid white;
+    padding-left: 3em;
+    transform: translate(17em);
+}
+.timeline-item:nth-child(even){
+    border-right: 3px solid white;
+    padding-right: 3em;
+    transform: translate(-7.5em);
+}
+.timeline-item:nth-child(odd)::before, .timeline-item:nth-child(even)::before{
+    content:"";
+    background: white;
+    width: 3em;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.timeline-item:nth-child(odd)::before{
+    left: 0;
+}
+.timeline-item:nth-child(even)::before{
+    right: 0;
+}
+.timeline-item:nth-child(odd) .timeline-content::before,.timeline-item:nth-child(even) .timeline-content::before{
+    content: "";
+    background: #fff;
+    box-shadow: 0 0 0.5em #0d71fc;
+    width: 0.8em;
+    height: 0.8em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+.timeline-item:nth-child(odd) .timeline-content::before{
+    left: -0.5em;
+}
+.timeline-item:nth-child(even) .timeline-content::before{
+    right: -0.5em;
+}
+
+.mid{
+    font-size: 0.8em;
+}
+
+
+
+.skills-container {
+  display: grid;
+grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
+  grid-template-columns: ;
+  gap: 20px;
+  padding: 20px;
+    width: 300px;
+}
+
+.skill-item {
+  background-color:black; /* Card background */
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+    color: white;
+    border: 2px solid white;
+    
+}
+.skill-item img{
+    width: 20%;
+    aspect-ratio: 4/3;
+    background: white;
+    border-radius: 5px;
+    object-fit: contain;
+    position: absolute;
+    transform: translate(-8em);
+}
+
+.skill-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.skill-item img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.skill-item h3 {
+  font-size: 1.2em;
+  margin: 10px 0 5px;
+}
+
+.skill-item p {
+  font-size: 0.9em;
+  color: #94a3b8; /* Subtext color */
+}
+
+.section3{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    position: relative;
+    margin-top: -100em;
+    top: -20em;
+    
+}
+.section3 h1{
+    color: white;
+    position:absolute;
+    top: -3em;
+    padding:20px;
+    right: 5.5em;
+    font-family: scifi;
+}
+
+
+.section4{
+    height: 100vh;
+    width: 50vw;
+    background: black;
+}
+
+
+.section4 h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+             color: white;
+    padding-top: 2em;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            background-color:black;
+            border: 1px solid white;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-family: scifi;
+        }
+
+        .project-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .project-button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .project-button:hover {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .project-button a {
+            text-decoration: none;
+            color: inherit;
+        }
+  .copyright {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #555;
+        }
+.my.scrolled{
+    right: 20rem;
+    position: relative;
+}
+
+
+
+
+       .contact-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem;
+            background: linear-gradient(135deg, #000 50%, #fff 50%);
+            color: #000;
+            
+        }
+
+        .contact-container {
+            background-color: #fff;
+            color: #000;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            text-align: center;
+            position: absolute;
+            margin-top: 13em;
+            
+        }
+
+        .contact-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: scifi;
+        }
+
+        .contact-container p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 90%;
+            padding: 1rem;
+            border: 2px solid #000;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #000;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #333;
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 150px;
+        }
+
+        .btn2 {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: scifi;
+        }
+
+        .btn2:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+}
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 1.5rem;
+            }
+
+            .contact-container h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-container {
+                padding: 1rem;
+            }
+
+            .contact-container h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn2 {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+        }
+
+
+@media screen and (max-width: 1150px){
+    .timeline .timeline-item{
+        width: 100%;
+        transform: none;
+        padding-left: 0;
+        padding-right: 0;
+        border: none;
+    }
+    
+    .timeline .timeline-item::before{
+        width: 3px;
+        height: 2.6em;
+        top: -0.1em;
+        left: 51.5%;
+        transform: translateY(-50%);
+    }
+    .timeline .timeline-item .timeline-content::before{
+        top: -0.1em;
+        left: 50%;
+        transform: translateY(-50%);
+    }
+    
+}
+@media (max-width: 1442px) {
+    .scrolled #name {
+        width: 85%; /* Changed vh to % for better responsiveness */
+        padding: 1em
+    }
+    .img {
+
+        width: 20em; /* Prevent horizontal overflow */
+        position: absolute;
+        top: 70em;
+        left: 53em;
+    }
+    .imgbr, .btn{
+        position: relative;
+
+      
+    }
+    .my {
+        margin-left: -17em;
+        max-width: calc(100% - 17em);
+    }
+    .links {
+        margin-top: 4em;
+        position: absolute;
+        left: 1px;
+    }
+    .section3 {
+        width: 85%;
+        max-width: 100%;
+        width: 1245px;
+    }
+    .timeline {
+        width: 45%;
+        margin-left: 8em;
+        max-width: calc(100% - 8em);
+        width: 1245px;
+    }
+    .yang {
+        transform: translate(15em);
+        max-width: calc(90% - 20em);
+    }
+    .project-item {
+        width: 14em;
+        display: flex;
+        flex-wrap: wrap; /* Force wrapping to avoid overflow */
+    }
+    .timeline-item:nth-child(odd){
+        transform: translate(13em);
+    }
+       .timeline-item:nth-child(even){
+        transform: translate(-4.85em);
+    }
+    .timeline-item{
+        height: 12em;
+    }
+    .content{
+        width: 1245px;
+    }
+    .section4{
+        height: 110vh;
+    }
+    .contact{
+        width: 1245px;
+    }
+}
