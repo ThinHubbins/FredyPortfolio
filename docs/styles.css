@@ -1121,6 +1121,9 @@ grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
         transform: scale(90%);
         padding: 50px;
     }
+    .circle{
+        display: none;
+    }
 }
 @media screen and (max-width: 1000px){
     .img{
