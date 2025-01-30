@@ -33,6 +33,167 @@ body {
     );
     
 }
+
+
+
+
+
+.circle {
+  --circle-size: 40px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 2px solid white;
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+  background: black;
+ z-index: 1;
+}
+
+
+
+#cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+#circle-container {
+  position: absolute;
+  pointer-events: none;
+}
+
+.circle2 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  opacity: 0;
+  animation: particle 1.5s infinite ease-out;
+}
+
+@keyframes particle {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+      
+  }
+  100% {
+    transform: scale(5);
+    opacity: 0;
+      border: 2px solid white;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Preloader styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black; /* Black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Bouncing balls container */
+.bouncing-ball-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+/* Ball styles */
+.ball {
+    width: 50px;
+    height: 50px;
+    background-color: white; /* White balls */
+    border-radius: 50%;
+    animation: bounce 1.5s infinite ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ball animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
+}
+
+/* Adding delay to create the staggered bouncing effect */
+.ball:nth-child(1) {
+    animation-delay: 0s;
+}
+.ball:nth-child(2) {
+    animation-delay: 0.3s;
+}
+.ball:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Hover effect (for aesthetic purposes) */
+.ball:hover {
+    transform: translateY(-50px); /* Bounce a little higher on hover */
+    box-shadow: 0 0 25px 7px rgba(255, 255, 255, 0.7); /* Increase glow on hover */
+}
+
+/* Hide content initially */
+#cont {
+    display: none;
+}
+
+
+
+
+.all{
+    animation: apear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+
+
+
+@keyframes apear{
+    from{
+        opacity: 0;
+        scale: 0.5
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+
+
+
+
+
 .progress-container {
   position: fixed;
   top: 0;
@@ -1033,6 +1194,9 @@ grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
         }
 
 @media screen and (max-width: 560px){
+    .intro1{
+        font-size: 20px;
+    }
     .img{
     position: absolute;
     top: 50%;
