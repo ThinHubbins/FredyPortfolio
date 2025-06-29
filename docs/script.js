@@ -140,8 +140,43 @@ window.addEventListener('DOMContentLoaded', () => {
         intro1.style.display = 'none';
         content1.style.display = 'block';
         fullname.style.display = 'block'; // Display the full name
-    }, 5000);
+    }, 10000);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+ const phrases = ["A NIGERIAN", "A LIFE ENTHUSIAST", "A FRONT-END DEV", "A CONTENT CREATOR", "A DATA ANALYST"];
+  const textElement = document.getElementById("changingText");
+  let index = 0;
+
+  function animateText() {
+    textElement.style.opacity = 0;
+    textElement.style.transform = "translateY(20px)";
+    textElement.innerText = phrases[index];
+
+    // Force reflow to restart animation
+    void textElement.offsetWidth;
+
+    textElement.classList.remove("animated-text");
+    void textElement.offsetWidth; // trigger reflow
+    textElement.classList.add("animated-text");
+
+    index = (index + 1) % phrases.length;
+  }
+
+  animateText(); // Initial call
+
+  setInterval(animateText, 2000);
 
 
 
