@@ -50,6 +50,7 @@ body {
   pointer-events: none;
   background: black;
  z-index: 1;
+    display: none;
 }
 
 
@@ -470,7 +471,7 @@ body {
 
 
 .profile {
-    background-image: url(img/images/gojo2.jpg);
+    background-image: url(img/images/file_0000000080e861f7bf2884bc149d68c5.png);
     height: 20rem;
     width: 15rem;
     background-size: contain; 
