@@ -1,5 +1,5 @@
 // Change heading text to "Booked!"
-document.getElementById("reservation-text").textContent = "Booked!";
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

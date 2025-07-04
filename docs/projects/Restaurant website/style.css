@@ -998,3 +998,48 @@ button:hover {
     padding: 0 1rem;
   }
 }
+@media (max-width: 400px) {
+    .reservation-intro{
+        font-size: 90%;
+    }
+  #reservations {
+    padding: 3rem 1rem;
+  }
+
+  .reservation-form {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .reservation-form input,
+  .reservation-form select,
+  .reservation-form textarea,
+  .reservation-form button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+    width: 80%;
+  }
+
+  .reservation-form label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .reservation-form button {
+    font-size: 1rem;
+    padding: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  .reservation-form h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .reservation-form input[type="date"],
+  .reservation-form input[type="time"] {
+    appearance: none;
+    -webkit-appearance: none;
+    font-size: 0.9rem;
+  }
+}
