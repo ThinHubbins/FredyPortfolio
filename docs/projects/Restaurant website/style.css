@@ -968,7 +968,7 @@ button:hover {
 
   .hero-plate-spin {
     position: static;
-    margin-top: -18rem;
+    margin-top: -10rem;
     transform: none;
     z-index: 2;
     display: flex;
@@ -976,9 +976,41 @@ button:hover {
   }
 
   .hero-plate-spin img {
-    width: 320px;
-    height: 320px;
+    width: 220px;
+    height: 220px;
   }
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+}
+@media (max-width: 450px) {
+
+  .hero-plate-spin {
+    position: static;
+    margin-top: -18rem;
+  }
+
+  .hero-plate-spin img {
+    width: 220px;
+    height: 220px;
+  }
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 }
 
 
