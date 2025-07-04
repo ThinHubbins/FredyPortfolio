@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison Étoile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+</head>
+<body>
+<header>
+  <h2>Maison Étoile</h2>
+  <button id="hamburger">&#9776;</button>
+  <nav id="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#reservations">Reservations</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+    
+
+<section id="hero">
+  <div class="hero-content">
+    <h1>Maison Étoile</h1>
+    <p>Where fine dining meets timeless elegance.</p>
+    <a href="#reservations" class="btn-gold">Reserve Now</a>
+  </div>
+</section>
+
+
+  <section id="menu" class="fade-in">
+  <h2>Menu</h2>
+  <div class="bento-menu">
+    <div class="menu-card big">
+      <img src="bakelob.jpg" alt="Baked Stuffed Lobster">
+      <div class="overlay">
+        <h3>Baked Stuffed Lobster</h3>
+        <p>Garlic butter, herbs, and breadcrumbs—rich and aromatic.</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="wagyu.jpg" alt="Wagyu Steak">
+      <div class="overlay">
+        <h3>Wagyu Steak</h3>
+        <p>Grilled to perfection with a red wine reduction.</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="truffle.jpg" alt="Truffle Risotto">
+      <div class="overlay">
+        <h3>Truffle Risotto</h3>
+        <p>Creamy arborio rice infused with truffle oil.</p>
+      </div>
+    </div>
+    <div class="menu-card tall">
+      <img src="scallops.jpg" alt="Seared Scallops">
+      <div class="overlay">
+        <h3>Seared Scallops</h3>
+        <p>Golden brown scallops with pomegranate glaze.</p>
+      </div>
+    </div>
+    <div class="menu-card wide">
+      <img src="duck.jpg" alt="Duck à l'Orange">
+      <div class="overlay">
+        <h3>Duck à l'Orange</h3>
+        <p>Crispy duck breast glazed in orange liqueur sauce.</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="lobs.jpg" alt="Lobster Thermidor">
+      <div class="overlay">
+        <h3>Lobster Thermidor</h3>
+        <p>Lobster in creamy white wine cheese sauce.</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="beef.jpg" alt="Beef Wellington">
+      <div class="overlay">
+        <h3>Beef Wellington</h3>
+        <p>Features buttery puff pastry filled with a deeply</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="foie.jpg" alt="Foie Gras">
+      <div class="overlay">
+        <h3>Foie Gras</h3>
+        <p>Luxurious duck liver</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="miso.jpg" alt="Miso Black Cod">
+      <div class="overlay">
+        <h3>Miso Black Cod</h3>
+        <p>Miso-glazed black cod.</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="chateaubriand.jpg" alt="Chateaubriand">
+      <div class="overlay">
+        <h3>Chateaubriand</h3>
+        <p>Thick-cut tenderloin with béarnaise sauce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section id="about" class="fade-in about-section">
+  <div class="about-container">
+    <div class="about-image">
+      <img src="restin.png" alt="Maison Étoile Interior">
+    </div>
+    <div class="about-content">
+      <h2>About Maison Étoile</h2>
+      <p>
+        Tucked in the heart of the city, <strong>Maison Étoile</strong> is a sanctuary of taste where art meets cuisine. Founded by visionary chef <strong>Émile Laurent</strong>, the restaurant is a tribute to the timeless traditions of French gastronomy — reimagined with modern finesse.
+      </p>
+      <p>
+        Each dish is a masterpiece, crafted with rare ingredients sourced from the finest farms and oceans across the globe. The ambiance blends Parisian opulence with contemporary elegance, creating an atmosphere designed for intimate conversations and unforgettable celebrations.
+      </p>
+      <p>
+        Our hand-selected wine cellar, curated by award-winning sommeliers, and personalized service elevate every dining experience into a symphony of flavor, fragrance, and feeling.
+      </p>
+      <p class="signature">“Excellence is not an act — it is our way of being.”</p>
+      <p class="chef-name">— Chef Émile Laurent</p>
+    </div>
+  </div>
+</section>
+
+
+ <section id="reservations" class="fade-in">
+  <h2>Reservations</h2>
+  <p id="reservation-text" class="reservation-intro">Reserve your table for an unforgettable experience.</p>
+
+
+  <!-- Form Container -->
+  <div id="form-container" class="reservation-form-container">
+    <form id="booking-form" class="reservation-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your full name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input id="date" type="date" required />
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <input id="time" type="time" required />
+      </div>
+      <div class="form-group">
+        <label for="guests">Guests</label>
+        <input id="guests" type="number" placeholder="e.g. 2" min="1" max="20" required />
+      </div>
+      <button type="submit" class="btn-gold">Book Table</button>
+    </form>
+  </div>
+
+  <!-- Success Checkmark -->
+  <div id="success-check" class="success-check">
+    <img src="check-removebg-preview.png" alt="Success" />
+  </div>
+</section>
+
+
+  <section id="reviews">
+  <h2>What Our Customers Say</h2>
+
+  <div class="horizontal-slider">
+    <div class="review-card">
+      <img src="pep1.jpg" alt="Olivia" class="profile-pic" />
+      <p>“Maison Étoile is pure magic. The ambiance, food, and service are unmatched.”</p>
+      <span>— Olivia M.</span>
+    </div>
+    <div class="review-card">
+      <img src="pep2.jpg" alt="Daniel" class="profile-pic" />
+      <p>“A taste of Paris in every bite. Truly elegant dining.”</p>
+      <span>— Daniel K.</span>
+    </div>
+    <div class="review-card">
+      <img src="fep1.jpg" alt="Fatima" class="profile-pic" />
+      <p>“From the wine to the dessert, everything was perfection.”</p>
+      <span>— Fatima A.</span>
+    </div>
+    <div class="review-card">
+      <img src="pep3.jpg" alt="Charles" class="profile-pic" />
+      <p>“Absolutely stunning restaurant. Will definitely return.”</p>
+      <span>— Charles N.</span>
+    </div>
+    <div class="review-card">
+      <img src="fep2.jpg" alt="Jade" class="profile-pic" />
+      <p>“Elegant, warm, and unforgettable. Maison Étoile is a must-visit.”</p>
+      <span>— Jade L.</span>
+    </div>
+  </div>
+</section>
+
+
+  <section id="contact">
+  <div class="contact-wrapper">
+    <h2>Contact Us</h2>
+    <p class="subtitle">We’d love to hear from you. Reach out for reservations or inquiries.</p>
+
+    <form class="contact-form">
+      <label>
+        <span>Your Name</span>
+        <input type="text" placeholder="John Doe" required />
+      </label>
+
+      <label>
+        <span>Your Email</span>
+        <input type="email" placeholder="john@example.com" required />
+      </label>
+
+      <label>
+        <span>Your Message</span>
+        <textarea rows="5" placeholder="Write your message..." required></textarea>
+      </label>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+    
+    
+    
+    
+    
+    
+    
+    <section id="top-chefs" class="fade-in top-chefs-section">
+  <h2>Our Top Chefs</h2>
+  <div class="chef-cards">
+    <div class="chef-card">
+      <img src="exc.jpg" alt="Chef Émile Laurent">
+      <h3>Chef Émile Laurent</h3>
+      <p class="title">Executive Chef</p>
+      <p class="quote">“At Maison Étoile, we don’t serve food — we serve artistry.”</p>
+    </div>
+    <div class="chef-card">
+      <img src="pas.jpg" alt="Chef Mireille Fontaine">
+      <h3>Chef Mireille Fontaine</h3>
+      <p class="title">Head Pastry Chef</p>
+      <p class="quote">“Dessert should linger like a final note in a symphony.”</p>
+    </div>
+    <div class="chef-card">
+      <img src="Sous-Chef.jpg" alt="Chef Luc Delacroix">
+      <h3>Chef Luc Delacroix</h3>
+      <p class="title">Sous Chef</p>
+      <p class="quote">“Precision, passion, and patience — the true ingredients of cuisine.”</p>
+    </div>
+  </div>
+</section>
+    
+    <footer class="lux-footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <h3>Maison Étoile</h3>
+      <p class="tagline">Where fine dining meets timeless elegance.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reservations">Reservations</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>📍 92 Rue de l’Étoile, Paris, France</p>
+      <p>📞 +33 1 23 45 67 89</p>
+      <p>✉️ fredrickchinweze30@gmail.com</p>
+    </div>
+    <div class="footer-hours">
+      <h4>Hours</h4>
+      <p>Mon – Sat: 5PM – 11PM</p>
+      <p>Sunday: Closed</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>&copy; 2025 Maison Étoile. All Rights Reserved.</p>
+  </div>
+</footer>
+    <footer class="foo" hidden>
+    
+    <p></p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br><br><br><br>
+    </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
