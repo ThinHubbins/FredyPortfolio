@@ -26,6 +26,93 @@ nav a {
 nav a:hover {
   color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1 1 500px;
+  text-align: left;
+}
+
+.hero-plate-spin {
+  position: absolute;
+  top: 50%;
+  right: -120px; /* Pull it partially out */
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-plate-spin img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  animation: spin 70s linear infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.2));
+  opacity: 0.8;
+  
+}
+
+/* Spin keyframe */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .hero-plate-spin {
+    display: none;
+  }
+}
+
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-plate {
+    margin-top: 2rem;
+  }
+}
+
+
+
+
+
+
 #hero {
   background-image: url("restaurant.png");
   background-size: cover;              
@@ -871,6 +958,28 @@ button:hover {
     }
 }
 
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-plate-spin {
+    position: static;
+    margin-top: -18rem;
+    transform: none;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-plate-spin img {
+    width: 320px;
+    height: 320px;
+  }
+}
 
 
 
